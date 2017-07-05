@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="tempsaying"></div>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+    <script>
+        var _typei = 0;
+        function DSsay(b) {
+            clearDSsay();
+            $("#tempsaying").append(b);
+            $("#tempsaying").css("display", "block");
+            uk_text = b;
+            typeWords();
+
+        }
+
+
+        function typeWords() {
+            var b = 1,
+                c = uk_text.substr(0, _typei),
+                a = uk_text.substr(_typei, 1);
+            if (a == "<") {
+                c += uk_text.substr(_typei, uk_text.substr(_typei).indexOf(">") + 1);
+                b = uk_text.substr(_typei).indexOf(">") + 1
+            }
+            _typei += b;
+            $("#tempsaying").html(c);
+            txtst = setTimeout("typeWords()", 200);
+            if (_typei > uk_text.length) {
+                clearTimeout(txtst);
+                _typei = 0
+            }
+        }
+
+
+        function clearDSsay() {
+            $("#tempsaying").html("")
+        }
+
+        DSsay("大家好呀，我来了哦，Hello");
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="aaa" style="display:none;">
+        静坐长思往日回，<br />
+        岁月蹉跎徒伤悲。<br />
+        小荷才露尖尖角，<br />
+        初设江湖岁月催。<br />
+        壮志未酬心犹在，<br />
+        琐事绕身家待归。<br />
+        日月虽往随心欲，<br />
+        梦里千回展翅飞。<br />
+    </div>
+
+    <div id="bbb"></div>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+    <script type="text/javascript">
+        var l = $("#aaa").text().length;
+        var s = $("#aaa").text();
+        var arr = [];
+        for (var i = 0; i < l; i++) {
+            arr[i] = s.substr(i, 1);
+        }
+        var t = 0;
+        function xiezi() {
+            if (t < l) {
+                $("#bbb").append(arr[t]);
+                t++;
+            } else {
+                //clearInterval(init);
+                $("#bbb").empty();
+                t = 0;
+            }
+        }
+        var init = setInterval("xiezi()", 100);
+    </script>
+</body>
+</html>

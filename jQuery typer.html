@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #container {
+            height: 200px;
+            width: 200px;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script type="text/javascript">
+        var con = $("#container");
+        var s = "这是一个用jquery实现的打字效果";
+        var len = s.length;
+        var index = 0;
+        var tid = null;
+
+        function start() {
+            con.text('');
+            tid = setInterval(function () {
+                con.append(s.charAt(index));
+                if (index++ === len) {
+                    clearInterval(tid);
+                    index = 0;
+                    start();
+                }
+            }, 100);
+        }
+
+        start();
+    </script>
+</body>
+</html>
